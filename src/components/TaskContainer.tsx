@@ -1,8 +1,6 @@
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 import { useTasks } from "../contexts/TasksContext";
-import Task from "./Task";
 import TaskList from "./TaskList";
-import { ITodo } from "../models/todo";
 
 export default function TaskContainer() {
   const tasks = useTasks();
