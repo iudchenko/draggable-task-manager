@@ -12,8 +12,12 @@ export default function TaskContainer() {
       <div className="grow shrink-0 basis-1/2 list-none bg-gray-100 dark:bg-gray-700 rounded p-4">
         <h2 className="pb-2 font-bold">Active tasks</h2>
         <Droppable droppableId="ActiveTasks">
-          {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+          {(provided, snapshot) => (
+            <div
+              className={`${snapshot.isDraggingOver ? "dragactive" : ""}`}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               <TaskList tasks={activeTasks} />
               {provided.placeholder}
             </div>
@@ -23,8 +27,12 @@ export default function TaskContainer() {
       <div className="grow shrink-0 basis-1/2 list-none bg-gray-100 dark:bg-gray-700 rounded p-4">
         <h2 className="pb-2 font-bold">Completed tasks</h2>
         <Droppable droppableId="CompletedTasks">
-          {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+          {(provided, snapshot) => (
+            <div
+              className={`${snapshot.isDraggingOver ? "dragcomplete" : ""}`}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               <TaskList tasks={completedTasks} />
               {provided.placeholder}
             </div>
