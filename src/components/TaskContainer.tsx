@@ -8,7 +8,7 @@ export default function TaskContainer() {
   const completedTasks = tasks.filter((t) => t.done);
 
   return (
-    <div className="flex gap-4 justify-between">
+    <div className="flex gap-4 justify-between min-h-[50vh]">
       <div className="grow shrink-0 basis-1/2 list-none bg-gray-100 dark:bg-gray-700 rounded p-4">
         <h2 className="pb-2 font-bold">Active tasks</h2>
         <Droppable droppableId="ActiveTasks">

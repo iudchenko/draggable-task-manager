@@ -20,18 +20,21 @@ const Main = () => {
     )
       return;
 
-    const newTasks = tasks.map((t: ITodo) => {
-      if (t.id === Number(draggableId)) {
-        return { ...t, done: !t.done };
-      } else {
-        return t;
-      }
-    });
+    if (destination.droppableId !== source.droppableId) {
+      console.log("not equ");
+      const newTasks = tasks.map((t: ITodo) => {
+        if (t.id === Number(draggableId)) {
+          return { ...t, done: !t.done };
+        } else {
+          return t;
+        }
+      });
 
-    dispatch({
-      type: "set",
-      tasks: newTasks,
-    });
+      dispatch({
+        type: "set",
+        tasks: newTasks,
+      });
+    }
   }
 
   return (
