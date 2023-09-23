@@ -8,7 +8,7 @@ interface TaskListProps {
 
 export default function TaskList({ tasks }: TaskListProps) {
   return (
-    <ul className="flex flex-col gap-2 overflow-scroll list-none">
+    <>
       {tasks?.length > 0 &&
         tasks.map((task: ITodo, index) => (
           <Draggable
@@ -28,6 +28,6 @@ export default function TaskList({ tasks }: TaskListProps) {
             )}
           </Draggable>
         ))}
-    </ul>
+    </>
   );
 }

@@ -11,7 +11,7 @@ const Main = () => {
   const dispatch = useTasksDispatch();
 
   function onDragEnd(result: DropResult) {
-    console.log(result);
+    // console.log(result);
     const { source, destination, draggableId } = result;
     if (!destination) return;
     if (
@@ -20,8 +20,32 @@ const Main = () => {
     )
       return;
 
-    if (destination.droppableId !== source.droppableId) {
-      console.log("not equ");
+    let add;
+    let active = tasks.filter((t) => !t.done);
+    let complete = tasks.filter((t) => t.done);
+
+    // Source Logic
+    if (source.droppableId === "ActiveTasks") {
+      add = active[source.index];
+      active.splice(source.index, 1);
+    } else {
+      add = complete[source.index];
+      complete.splice(source.index, 1);
+    }
+
+    // Destination Logic
+    if (destination.droppableId === "ActiveTasks") {
+      active.splice(destination.index, 0, add);
+    } else {
+      complete.splice(destination.index, 0, add);
+    }
+
+    if (destination.droppableId === source.droppableId) {
+      dispatch({
+        type: "set",
+        tasks: [...active, ...complete],
+      });
+    } else {
       const newTasks = tasks.map((t: ITodo) => {
         if (t.id === Number(draggableId)) {
           return { ...t, done: !t.done };
@@ -29,7 +53,6 @@ const Main = () => {
           return t;
         }
       });
-
       dispatch({
         type: "set",
         tasks: newTasks,

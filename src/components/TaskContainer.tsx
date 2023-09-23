@@ -1,6 +1,8 @@
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 import { useTasks } from "../contexts/TasksContext";
+import Task from "./Task";
 import TaskList from "./TaskList";
+import { ITodo } from "../models/todo";
 
 export default function TaskContainer() {
   const tasks = useTasks();
@@ -18,8 +20,10 @@ export default function TaskContainer() {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              <TaskList tasks={activeTasks} />
-              {provided.placeholder}
+              <ul className="flex flex-col gap-2 overflow-scroll list-none">
+                <TaskList tasks={activeTasks} />
+                {provided.placeholder}
+              </ul>
             </div>
           )}
         </Droppable>
@@ -33,8 +37,10 @@ export default function TaskContainer() {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              <TaskList tasks={completedTasks} />
-              {provided.placeholder}
+              <ul className="flex flex-col gap-2 overflow-scroll list-none">
+                <TaskList tasks={completedTasks} />
+                {provided.placeholder}
+              </ul>
             </div>
           )}
         </Droppable>
