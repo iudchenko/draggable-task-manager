@@ -7,8 +7,6 @@ import { ITodo } from "../models/todo";
 
 const Main = () => {
   const tasks = useTasks();
-  const activeTasks = tasks.filter((t) => !t.done);
-  const completedTasks = tasks.filter((t) => t.done);
 
   const dispatch = useTasksDispatch();
 
