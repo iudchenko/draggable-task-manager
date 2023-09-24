@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTasksDispatch } from "../contexts/TasksContext";
 import {
   HiOutlineBookmarkSquare,
@@ -11,6 +11,17 @@ import { ITodo } from "../models/todo";
 function Task({ task }: { task: ITodo }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const dispatch = useTasksDispatch();
+
+  useEffect(() => {
+    if (isEditing) {
+      window.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          setIsEditing(false);
+        }
+      });
+    }
+  }, [isEditing]);
 
   let taskContent;
   if (isEditing) {

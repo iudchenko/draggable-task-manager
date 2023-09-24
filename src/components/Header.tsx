@@ -1,4 +1,5 @@
 import DarkModeToggle from "./DarkModeToggle";
+import ResetButton from "./ResetButton";
 
 function Header() {
   return (
@@ -6,7 +7,10 @@ function Header() {
       <h1 className="text-xl md:text-3xl font-bold justify-center">
         What are you up to today?
       </h1>
-      <DarkModeToggle />
+      <div>
+        <DarkModeToggle />
+        <ResetButton />
+      </div>
     </header>
   );
 }

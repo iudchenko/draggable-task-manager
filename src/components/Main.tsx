@@ -42,7 +42,7 @@ const Main = () => {
 
     if (destination.droppableId === source.droppableId) {
       dispatch({
-        type: "set",
+        type: "reorder",
         tasks: [...active, ...complete],
       });
     } else {
@@ -54,7 +54,7 @@ const Main = () => {
         }
       });
       dispatch({
-        type: "set",
+        type: "reorder",
         tasks: newTasks,
       });
     }

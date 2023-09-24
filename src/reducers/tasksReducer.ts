@@ -22,7 +22,7 @@ export function tasksReducer(tasks: ITodo[], action: TaskAction) {
         }
       });
     }
-    case "set": {
+    case "reorder": {
       return action.tasks;
     }
     case "reset": {
