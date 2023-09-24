@@ -24,7 +24,7 @@ export default function AddTask() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex gap-5 mb-5">
+      <div className="flex gap-2 lg:gap-5 mb-5 flex-col lg:flex-row">
         <input
           className="block grow p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Add task"
