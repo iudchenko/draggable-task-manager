@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="flex flex-col lg:flex-row justify-between p-5 max-w-2xl mx-auto gap-2">
       <h1 className="text-xl md:text-3xl font-bold justify-center">
-        What are you up to today?
+        🎯Task Manager
       </h1>
       <div>
         <DarkModeToggle />
