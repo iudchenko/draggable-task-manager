@@ -12,7 +12,7 @@ function Task({ task }: { task: ITodo }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const dispatch = useTasksDispatch();
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     setIsEditing(false);
   }
