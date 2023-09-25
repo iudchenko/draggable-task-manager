@@ -9,10 +9,12 @@ export default function AddTask() {
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
+
     if (text === "") {
       toast.error("Please, add task description");
       return;
     }
+
     setText("");
     dispatch({
       type: "added",

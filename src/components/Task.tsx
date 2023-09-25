@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTasksDispatch } from "../contexts/TasksContext";
 import {
   HiOutlineBookmarkSquare,
@@ -12,21 +12,15 @@ function Task({ task }: { task: ITodo }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const dispatch = useTasksDispatch();
 
-  useEffect(() => {
-    if (isEditing) {
-      window.addEventListener("keydown", (e: KeyboardEvent) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          setIsEditing(false);
-        }
-      });
-    }
-  }, [isEditing]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsEditing(false);
+  }
 
   let taskContent;
   if (isEditing) {
     taskContent = (
-      <>
+      <form onSubmit={handleSubmit}>
         <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={task.text}
@@ -41,7 +35,7 @@ function Task({ task }: { task: ITodo }) {
             });
           }}
         />
-      </>
+      </form>
     );
   } else {
     taskContent = <>{task.text}</>;
