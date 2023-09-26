@@ -7,7 +7,7 @@ function Header() {
       <h1 className="text-xl md:text-3xl font-bold justify-center">
         🎯Task Manager
       </h1>
-      <div>
+      <div className="flex lg:justify-between gap-2">
         <DarkModeToggle />
         <ResetButton />
       </div>

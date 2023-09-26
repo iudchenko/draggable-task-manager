@@ -3,7 +3,11 @@ export default {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      flexBasis: {
+        half: "calc(50% - 8px)",
+      },
+    },
   },
   plugins: [],
 };
