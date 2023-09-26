@@ -1,4 +1,4 @@
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import AddTask from "../components/AddTask";
 import TaskContainer from "../components/TaskContainer";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
@@ -20,6 +20,7 @@ const Main = () => {
     )
       return;
 
+    // Reordering of tasks
     let add;
     let active = tasks.filter((t) => !t.done);
     let complete = tasks.filter((t) => t.done);
@@ -41,11 +42,13 @@ const Main = () => {
     }
 
     if (destination.droppableId === source.droppableId) {
+      // Reorder
       dispatch({
         type: "reorder",
         tasks: [...active, ...complete],
       });
     } else {
+      // Toggle tasks complete/active
       const newTasks = tasks.map((t: ITodo) => {
         if (t.id === Number(draggableId)) {
           return { ...t, done: !t.done };
@@ -53,10 +56,17 @@ const Main = () => {
           return t;
         }
       });
+
       dispatch({
         type: "reorder",
         tasks: newTasks,
       });
+
+      if (destination.droppableId === "CompletedTasks") {
+        toast("Task completed!", {
+          icon: "👏",
+        });
+      }
     }
   }
 
