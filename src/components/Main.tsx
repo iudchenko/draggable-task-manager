@@ -48,19 +48,25 @@ const Main = () => {
         tasks: [...active, ...complete],
       });
     } else {
-      // Toggle tasks complete/active
-      const newTasks = tasks.map((t: ITodo) => {
-        if (t.id === Number(draggableId)) {
-          return { ...t, done: !t.done };
-        } else {
-          return t;
-        }
-      });
-
+      // Reorder
       dispatch({
         type: "reorder",
-        tasks: newTasks,
+        tasks: [...active, ...complete],
       });
+
+      // Find completed task
+      const completed = tasks.find((t: ITodo) => t.id === Number(draggableId));
+
+      // Toggle tasks complete/active
+      if (completed) {
+        dispatch({
+          type: "changed",
+          task: {
+            ...completed,
+            done: !completed.done,
+          },
+        });
+      }
 
       if (destination.droppableId === "CompletedTasks") {
         toast("Task completed!", {

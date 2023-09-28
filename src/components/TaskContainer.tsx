@@ -9,12 +9,14 @@ export default function TaskContainer() {
 
   return (
     <div className="flex gap-4 justify-between min-h-[50vh] flex-col lg:flex-row">
-      <div className="grow shrink-0  basis-half list-none bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
+      <div className="flex flex-col grow shrink-0  basis-half list-none bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
         <h2 className="pb-2 font-bold">Active tasks</h2>
         <Droppable droppableId="ActiveTasks">
           {(provided, snapshot) => (
             <div
-              className={`${snapshot.isDraggingOver ? "dragactive" : ""}`}
+              className={`h-full ${
+                snapshot.isDraggingOver ? "dragactive" : ""
+              }`}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -26,12 +28,14 @@ export default function TaskContainer() {
           )}
         </Droppable>
       </div>
-      <div className="grow shrink-0 basis-half list-none bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
+      <div className="flex flex-col grow shrink-0 basis-half list-none bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
         <h2 className="pb-2 font-bold">Completed tasks</h2>
         <Droppable droppableId="CompletedTasks">
           {(provided, snapshot) => (
             <div
-              className={`${snapshot.isDraggingOver ? "dragcomplete" : ""}`}
+              className={`h-full ${
+                snapshot.isDraggingOver ? "dragactive" : ""
+              }`}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >

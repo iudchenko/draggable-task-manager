@@ -7,3 +7,9 @@
     font-family: "Inter", sans-serif;
   }
 }
+
+@layer components {
+  .dragactive {
+    @apply bg-gray-300 dark:bg-gray-500 border-2 border-gray-800 border-dotted rounded-lg;
+  }
+}
